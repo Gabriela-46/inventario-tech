@@ -1,6 +1,6 @@
 from django.db import models
 
-class Product(models.Model):
+class Producto(models.Model):
     id = models.AutoField(primary_key=True)
     sku = models.CharField(max_length=50, unique=True)
     nombre = models.CharField(max_length=120)
@@ -37,7 +37,7 @@ class Almacen(models.Model):
 
 class Inventario(models.Model):
     id = models.AutoField(primary_key=True)
-    producto = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='inventario')
+    producto = models.ForeignKey('Producto', on_delete=models.CASCADE, related_name='inventario')
     almacen = models.ForeignKey('Almacen', on_delete=models.CASCADE, related_name='inventario')
     cantidad = models.IntegerField()
     stock_minimo = models.IntegerField()
